@@ -11,8 +11,8 @@
 
 
 Question 1 
-1.Trust free ecommerce
-2.+ Blockchain
+1. Trust free ecommerce
+2. Blockchain
 	+ Literature review
 	+ Sharing economy
 	+ Trust
