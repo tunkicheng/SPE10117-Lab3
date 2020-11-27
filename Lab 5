@@ -1,4 +1,36 @@
+'''
+filename:filep41.py
 
-<table border=1>
-<tr><th>Name</th><th>Address</th><th>Txn</th><th>Amount</th></tr>
-<tr><td>Fred Chan</td><td>213 Yuen Long Avenue</td><td>D</td><td>41.03</td></tr><tr><td>Sue Wong</td><td>9102 Kowloon Circle</td><td>D</td><td>10.00</td></tr><tr><td>Fred Chan</td><td>213 Yuen Long Avenue</td><td>C</td><td>0.01</td></tr><tr><td>Baba Li</td><td>2000 E. 21st Street</td><td>D</td><td>450.00</td></tr><tr><td>Sue Wong</td><td>9102 Kowloon Circle</td><td>C</td><td>5.50</td></tr><tr><td>Jay Law</td><td>9103 Problem Area</td><td>C</td><td>25.00</td></tr><tr><td>Fred Chan</td><td>213 Yuen Long Avenue</td><td>C</td><td>41.02</td></tr></table>
+Read datafile1.dat in text format, create a list, print the 
+list to console and create a html table in output.html 
+'''
+
+fileIn = open('datafile1.dat', 'r')
+fileOut = open('output.html','w')
+data=[]
+
+lines = fileIn.read().splitlines()
+
+for line in lines:
+    transactionRecord = line.split('_')
+    data.append(transactionRecord)
+    
+print('%-20s%-30s%5s%10s'%('Name','Address','Txn', 'Ampunt'))
+print('='*65)
+
+for e in data:
+    print('%-20s%-30s%5s%10s'%(e[0], e[1], e[2], e[3]))
+
+fileOut.write('''
+|Name|Address|Txn|Amount|
+|--  |--     |-- |--    |
+''')
+for e in data:
+    fileOut.write('|'+e[0]+'|' +
+                   e[1]+'|' +
+                   e[2]+'|' +
+                   e[3]+'|' +'\n' )
+                
+         
+fileIn.close()
+fileOut.close()
